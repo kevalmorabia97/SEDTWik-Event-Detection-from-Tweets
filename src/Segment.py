@@ -7,6 +7,7 @@ class Segment:
         user_count        - no. of unique users that used this segment in current time window
         retweet_count     - sum of retweet counts of all tweets containing this segment
         followers_count   - sum of followers count of all users using this segment
+        newsworthiness    - measure of importance of segment calculated by Twevent's Q(s) values
         """
         self.segment = segment
         self.tweets = []
@@ -15,6 +16,7 @@ class Segment:
         self.user_set = set()
         self.retweet_count = 0
         self.followers_count = 0
+        self.newsworthiness = 0
         
     def add_tweet(self, user_id, text, retweet_count, followers_count):    
         self.tweets.append(text)

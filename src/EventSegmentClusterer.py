@@ -21,31 +21,49 @@ def get_seg_similarity(bursty_segment_weights, time_window):
             
     return seg_sim
 
-def get_events(bursty_segment_weights, seg_sim, n_neighbors=3, min_cluster_segments=5):
+def get_events(bursty_segment_weights, segment_newsworthiness, seg_sim, n_neighbors=4, max_cluster_segments=20, threshold=4):
     """
-    return event clusters from bursty_segment_scores(dict from seg_name to bursty_wt) in time_window using a variation of Jarvis Patrick Clustering Algo
-    """
+    return event clusters from bursty_segment_scores(dict from seg_name to bursty_wt)
+    using a variation of Jarvis Patrick Clustering Algo
+    """    
     bursty_segments = list(bursty_segment_weights.keys())
     n = len(bursty_segments)
     
     G = nx.Graph()
     G.add_nodes_from(range(n))
+    
     k_neighbors = {}
     for i in range(n):
         k_neighbors[i] = get_k_neighbors(n_neighbors, i, seg_sim)
-        
+    
+    # add edge between a,b if both in k_neighbors of other
     for i in range(n):
         for j in range(i+1,n):
             if i in k_neighbors[j] and j in k_neighbors[i]:
                 G.add_edge(i,j)
     
-    clusters = []
-    for comp in nx.connected_components(G):
-        if(len(comp) >= min_cluster_segments):
-            avg_cluster_bursty_score = sum([bursty_segment_weights[bursty_segments[i]] for i in comp]) / len(comp)
-            clusters.append( ([bursty_segments[i] for i in comp], avg_cluster_bursty_score) )
-
-    return get_most_newsworthy_cluters(clusters)
+    clusters = [] # each cluster is a tuple of list(segments) and event_newsworthiness
+    max_event_worthiness = 0
+    for sg in nx.connected_component_subgraphs(G):
+        n = len(sg.nodes)
+        if(n < 1.5*n_neighbors): continue # remove clusters with size < 2*n_neighbors
+        
+        cluster_segments = [bursty_segments[i] for i in sg.nodes]
+        
+        event_newsworthiness = sum([segment_newsworthiness[s] for s in cluster_segments])/n
+        event_newsworthiness *= sum([seg_sim[i][j] for i,j in sg.edges])/n
+        
+        max_event_worthiness = max(max_event_worthiness,event_newsworthiness)
+        
+        # keep top k=max_cluster_segments segments as per bursty_score
+        cluster_segments = sorted(cluster_segments, key=lambda x:bursty_segment_weights[x], reverse=True)[:max_cluster_segments]
+        
+        clusters.append((cluster_segments, event_newsworthiness))
+        
+    clusters = sorted(clusters, key = lambda x:x[1], reverse=True)
+    threshold_worthiness = max_event_worthiness/threshold
+    
+    return [c for c in clusters if c[1]>threshold_worthiness] 
             
 def get_k_neighbors(k, seg, seg_sim):
     """
@@ -58,9 +76,3 @@ def get_k_neighbors(k, seg, seg_sim):
         neighbor_list.append(i)
         sim_list.append(seg_sim[seg][i])
     return set([x for _,x in sorted(zip(sim_list,neighbor_list), reverse=True)][:k])
-
-def get_most_newsworthy_cluters(clusters):
-    """
-    return those clusters that pass the threshold of news worthiness
-    """
-    return sorted(clusters, key = lambda x : x[1], reverse=True)

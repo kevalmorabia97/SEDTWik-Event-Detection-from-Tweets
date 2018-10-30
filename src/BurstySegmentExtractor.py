@@ -32,6 +32,7 @@ class BurstySegmentExtractor():
     def get_bursty_segments(self, time_window):
         """
         return top k=sqrt(N) segments where N = no of tweets in time window in a dict with value equal to bursty weight
+        Also return their news_worthiness values in a dict
         """
         
         print('Extracting Bursty Segments')
@@ -52,6 +53,7 @@ class BurstySegmentExtractor():
                     user_set = user_set.union(segment.user_set)
                     retweet_count += segment.retweet_count
                     followers_count += segment.followers_count
+                    newsworthiness = segment.newsworthiness
             
             user_count = len(user_set)
                 
@@ -72,10 +74,12 @@ class BurstySegmentExtractor():
         print('Bursty Segments:',k)
         
         bursty_segment_weights = OrderedDict()
+        segment_newsworthiness = {}
         for seg,b_score in sorted(segments, key = lambda x : x[1], reverse=True)[:k]:
             bursty_segment_weights[seg] = b_score
+            segment_newsworthiness[seg] = newsworthiness
             
-        return bursty_segment_weights
+        return bursty_segment_weights, segment_newsworthiness
     
     def sigmoid(self, x):
         return 1/(1+exp(-x))
