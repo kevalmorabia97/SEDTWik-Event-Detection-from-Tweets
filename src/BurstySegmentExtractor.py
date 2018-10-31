@@ -82,4 +82,8 @@ class BurstySegmentExtractor():
         return bursty_segment_weights, segment_newsworthiness
     
     def sigmoid(self, x):
-        return 1/(1+exp(-x))
+        try:
+            return 1/(1+exp(-x))
+        except:
+            print('SIGMOID ERROR:', x)
+            return 0
