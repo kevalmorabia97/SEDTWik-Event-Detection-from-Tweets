@@ -9,11 +9,12 @@ def get_seg_similarity(bursty_segment_weights, time_window):
     bursty_segments = list(bursty_segment_weights.keys())
     n = len(bursty_segments)
     for i in range(n):
+        seg_sim[i] = {}
+        seg_sim[i][i] = 1
         seg1_name = bursty_segments[i]
         print(i+1,seg1_name,str(bursty_segment_weights[seg1_name])[:7])
-        for j in range(i,n):
+        for j in range(i+1,n):
             seg2_name = bursty_segments[j]
-            if i not in seg_sim: seg_sim[i] = {}
             if j not in seg_sim: seg_sim[j] = {}
             sim = time_window.get_segment_similarity(seg1_name, seg2_name)
             seg_sim[i][j] = sim
@@ -46,7 +47,7 @@ def get_events(bursty_segment_weights, segment_newsworthiness, seg_sim, n_neighb
     max_event_worthiness = 0
     for sg in nx.connected_component_subgraphs(G):
         n = len(sg.nodes)
-        if(n < 1.5*n_neighbors): continue # remove clusters with size < 2*n_neighbors
+        if(n < 1.5*n_neighbors): continue # remove clusters with size < 1.5*n_neighbors
         
         cluster_segments = [bursty_segments[i] for i in sg.nodes]
         
