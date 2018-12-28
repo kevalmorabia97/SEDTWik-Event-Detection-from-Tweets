@@ -3,9 +3,9 @@ import math
 import re
 
 
-## IMPROVEMENT that can be done: What if in tweet = <w1,w2,w3> <w1,w2> is in wiki and <w2,w3> is also there. Which segmentation to prefer?
-class WikiTweetSegmenter:
-    def __init__(self, wiki_titles_file, max_segment_length=4, hashtag_wt=2, entities_only=False):
+## IMPROVEMENT that can be done: What if in tweet = <w1,w2,w3>, <w1,w2> is in wiki and <w2,w3> is also there. Which segmentation to prefer?
+class SEDTWikSegmenter:
+    def __init__(self, wiki_titles_file, max_segment_length=4, hashtag_wt=3, entities_only=False):
         """
         Segment tweet based on Wikipedia Page Titles (processed by pyTweetCleaner.py)
         tweet_text should be processed by pyTweetCleaner.py before segmenting i.e. lowercase without hyperlinks, punctuations, non-ascii chars, stopwords, hashtags, @name
@@ -15,7 +15,7 @@ class WikiTweetSegmenter:
         NOTE: #tags are splitted and considered a segment
         NOTE: @username mentions are replaced by full name of user and considered a segment
         """
-        print('Initializing WikiTweetSegmenter')
+        print('Initializing SEDTWik Segmenter')
         
         wiki_titles = {} # 2 level dict, 1st level is 'a' to 'z' and 'other' to make search faster!!
         for i in range(97,123):
@@ -35,7 +35,7 @@ class WikiTweetSegmenter:
         self.hashtag_wt = hashtag_wt
         self.entities_only = entities_only
         
-        print('WikiTweetSegmenter Ready\n')
+        print('SEDTWik Segmenter Ready\n')
      
     def compound_word_split(self, compound_word):
         """
@@ -219,7 +219,7 @@ class TweventTweetSegmenter:
 
 if __name__ == '__main__':
     #segmenter = TweventTweetSegmenter()
-    segmenter = WikiTweetSegmenter(wiki_titles_file = '../data/enwiki-titles-unstemmed.txt')
+    segmenter = SEDTWik(wiki_titles_file = '../data/enwiki-titles-unstemmed.txt')
 
     while True:
          print('Enter Tweet to segment it ("x" to exit)...')
@@ -228,14 +228,3 @@ if __name__ == '__main__':
          print('Segmentation:',segmenter.text_segmentation(tweet_text),'\n')
     
     print('\nEXITED')
-    
-# Examples of Segmentation by WikiTweetSegmenter:
-#
-# 1. 'movie twilight saga new moon biggest winner mtv movie awards 2010 took 10 best awards'
-#    'movie', 'twilight saga new moon', 'biggest winner', 'mtv movie awards', '2010', 'took', '10', 'best', 'awards'
-#
-# 2. 'every girl deserves treated like princess'
-#    'every girl', 'deserves', 'treated', 'like', 'princess'
-#
-# 3. 'think im going deep depression knowing kalistala couldnt get justin bieber tickets'
-#    'think', 'im', 'going deep', 'depression', 'knowing', 'kalistala', 'couldnt', 'get', 'justin bieber', 'tickets'

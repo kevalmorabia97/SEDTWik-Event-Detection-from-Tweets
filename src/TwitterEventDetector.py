@@ -8,7 +8,7 @@ from BurstySegmentExtractor import *
 from EventSegmentClusterer import *
 from Segment import *
 from TimeWindow import *
-from TweetSegmenter import WikiTweetSegmenter
+from TweetSegmenter import SEDTWikSegmenter
 from utils.pyTweetCleaner import *
 
 
@@ -17,7 +17,7 @@ class TwitterEventDetector():
     def __init__(self, wiki_titles_file, seg_prob_file, wiki_Qs_file, remove_retweets=False, max_segment_length=4, hashtag_wt=3,
                  use_retweet_count=True, use_followers_count=True, default_seg_prob=0.000001, entities_only=False):
         
-        self.segmenter = WikiTweetSegmenter(wiki_titles_file, max_segment_length, hashtag_wt, entities_only)
+        self.segmenter = SEDTWikSegmenter(wiki_titles_file, max_segment_length, hashtag_wt, entities_only)
 
         self.remove_retweets = remove_retweets
         
