@@ -82,8 +82,13 @@ class TwitterEventDetector():
         """
         seg = seg.split(' ')
         n = len(seg)
-        max_sub_phrase_prob = max([self.get_wiki_Qs_prob(seg[i:i+j+1]) for i in range(n) for j in range(n-i)])
-        return exp(max_sub_phrase_prob)-1
+        #max_sub_phrase_prob = max([self.get_wiki_Qs_prob(seg[i:i+j+1]) for i in range(n) for j in range(n-i)])
+        #return exp(max_sub_phrase_prob)-1
+        if n == 1:
+            return exp(self.get_wiki_Qs_prob(seg))
+        else:
+            max_sub_phrase_prob = max([self.get_wiki_Qs_prob(seg[i:i+j+1]) for i in range(n) for j in range(n-i)])
+            return exp(max_sub_phrase_prob)-1
     
     def get_wiki_Qs_prob(self, seg):
         """

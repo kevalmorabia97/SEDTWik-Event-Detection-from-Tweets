@@ -93,16 +93,16 @@ class TweetCleaner:
                 tweet['retweet_count'] = 0
                 tweet['user'] = retweeter_info
                 
-            #if not "created_at" in tweet: continue # remove info about deleted tweets
-            #if not tweet['lang'] == 'en': continue # remove tweets in non engligh(or lang) language
-            #if not tweet['in_reply_to_status_id'] == None or not tweet['in_reply_to_user_id'] == None: continue # remove comments of any tweet
+            if not "created_at" in tweet: continue # remove info about deleted tweets
+            if not tweet['lang'] == 'en': continue # remove tweets in non engligh(or lang) language
+            if not tweet['in_reply_to_status_id'] == None or not tweet['in_reply_to_user_id'] == None: continue # remove comments of any tweet
             
             cleaned_text = self.get_cleaned_text(tweet['text'])
             if cleaned_text == '': continue
             
             cleaned_tweet = {}
             cleaned_tweet['created_at'] = tweet['created_at']
-            #cleaned_tweet['id'] = tweet['id']
+            cleaned_tweet['id'] = tweet['id']
             cleaned_tweet['text'] = cleaned_text
             cleaned_tweet['user'] = {}
             cleaned_tweet['user']['id'] = tweet['user']['id']
