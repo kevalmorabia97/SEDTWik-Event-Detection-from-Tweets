@@ -1,0 +1,85 @@
+79 events detected by SEDTWik from the interval Oct 11 - Oct 17, 2012 [These events are manually annotated by looking at the segments in the cluster]
+----------------------------------------------------------------------
+
+Chinese author Mo Yan, famous for working in the style of writing known as hallucinatory realism, wins the Nobel Prize in Literature
+12 Oct 2012 Paul Ryan spoke for 40 of the 90 minutes during Thursday night's vice presidential debate and managed to tell at least 24 myths during that time
+tweets are about Nobel peace Prize and about EU and wining the same prize???AAre the have to win?
+St. Louis Cardinals win their National League Divisional Series agains the Washington Nationals.
+LSU beats South Carolina 23-21 in a football game.
+15 Oct Ray Lewis tore a tricep muscle out for possibly a year and maybe career.
+15 Oct Reactions to the Denver Broncos big comeback win over the San Diego Chargers.
+16 Oct During US presidential debate, President Barack Obama tells candidate Mitt Romney he is the last person to get tough on China.
+16 Oct earthquake strikes Hollis Center, Maine, roughly 20 miles west of Portland, Maine
+Jason Werth hitting a walkoff home run for the Nationals during the playoff game against the Cardinals.
+14 Oct The Redbull Stratos jump was a space diving event.  Felix Baumgartner flew many miles into the air above the southwestern U.S. and then jumped, breaking several world records.
+New York Yankees losing a playoff baseball game in which Derek Jeter was injured.
+16 Oct Beyonce is scheduled to perform at the Super Bowl XLVII Halftime Show.
+Nike ended the promotonal agreemends they had with Lance Armstrong when he was accused of using performance enhancing drugs. 
+This is about a yankees/orioles game that went extra innings.
+Match between Manchester united and Sanmarino
+A Cleveland bus driver punched a female passenger in the face.
+Buster Posey grand slam leads SF Giants to historic Division Series
+14 Oct Tweets Discussing an Eagle game. 
+14 Oct They discuss about the American football team Seahawks.
+15 Oct Nobel Prize for economics awarded to two U.S. economists: Alvin E. Roth of Harvard University and Lloyd Shapley
+15 Oct The annoucement of Tina Fey and Amy Poehler hosting the 70th Golden Globes Awards.
+16 Oct Comments on the Philadelphia Eagles firing Defensive Coordinator Juan Castillo.
+16 Oct Apple Computer is sending out invites to a media event on Oct. 23. They will probably announce the new iPad Mini at this event.
+Ryan Bertrand has had to pull out of the England Squad with a sore throat
+16 Oct Polish not closing roof causing England game to be canceled
+16 Oct The Detriot Tigers being one win away from going to the World Series during the playoff series against the New York Yankees.
+16 Oct Hilary Mantel wins the 2012 Man Booker Prize for her novel Bring Up the Bodies
+17 Oct One UNAMID peacekeeper is killed and three are wounded during an ambush in Hashaba, Sudan.
+17 Oct Anheuser-Busch states it will allow Armstrong's contract with them to expire at the end of the year
+14 Oct Former United States Senator Arlen Specter, who was vital in several United States Supreme Court nominations, dies at the age of 82
+
+Below are those 48 events that were detected by SEDTWik but not by the creator of the Events 2012 dataset (McMinn et. al., 2013)
+--------------------------------------------------------------------------------------------
+11 Oct National Coming Out Day
+10 Oct Amanda Todd suicide because of Cyber Bullying on this night
+12 Oct Justin and Nicki Minaj's music video of Beauty and a beat released
+11 Oct The Vampire Diaries Season 04 aired this night
+12 Oct Pittsburgh Steelers vs. Tennessee Titans football game
+12 Oct San Marino vs England Match in which Joe Hart was the goal keeper of England
+12 Oct Related to Bush Tax Cuts and Middle Class Tax Relief and Job Creation Act of 2012
+11 Oct NLCS SF Giants vs Reds Baseball match
+11 Oct Ateneo Blue Eagles win finals of University Athletic Association of the Philippines (UAAP)
+11 Oct International Day of the Girl Child
+11 Oct Boeing 727 passenger jet to study the mechanics of a plane crash in real time
+11 Oct Dale Earnhardt Jr. will not compete in the upcoming NASCAR Sprint Cup Series events at Charlotte due to concussion
+11 Oct Roger Federer beats Stanislas Wawrinka in Shanghai to become first player to spend 300 weeks as world No 1
+11 Oct Katie Price and Conor Maynard appears on the episode of Celebrity Juice - a british TV game show
+Breast Cancer Awareness Month - October
+13 Oct X Factor UK finalists James Arthur and Rylan Clark Live Show in London
+13 Oct National No Bra Day
+13 Oct Oklahoma Sonners beat Texas Longhorns in a football match
+13 Oct West Virginia Mountaineers vs. Texas Tech Red Raiders football game
+13 Oct t. Louis Cardinals defeat Washington Nationals in NLDS and advance to NLCS
+14 Oct Dallas Cowboys vs. Baltimore Ravens football game
+14 Oct About clutch hits of Raul Ibanez - a member of New York Yankees baseball team
+14 Oct Taylor Swift performs live at X Factor UK
+14 Oct Ultimate Fighting Championship (UFC) 153 finals between Anderson Silva and Stephan Bonnar
+14 Oct A Fotball match between 49ers and Giants during NLCS
+14 Oct South Carolina Gamecocks vs. LSU National Championship foorball match
+14 Oct 2012 Korean Grand Prix F-1 racing in which Sebastian Vettel won
+14 Oct New England Patriots vs. Seattle Seahawks football game in which Tom Brady(Patriots) and Russel Wilson(Seahawks) were the quaterbacks.
+15 Oct The Wanted - I Found You music video released
+15 Oct fourth series of Made in Chelsea, a British structured-reality television programme, began airing
+15 Oct Regarding Baltimore Ravens Superbowl match
+15 Oct 2nd Match of San Francisco Giants Season
+15 Oct Regarding the Sunday Night Fantasy Football Match
+15 Oct Little Nemo in Slumberland by Winsor McCay aniversary. Released on this day in 1905
+15 Oct Oct Wiz Khalifa released Cabin Fever 2 Mixtape
+15 Oct Justin Bieber's video Beauty and a Beat creates world record of most watched VEVO video in 24 hrs
+13 Oct ['union j', 'hey guys', 'unionjtowinxfactor', 'saved', 'guys love']
+16 Oct The Great British Bake Off 2012 final
+16 Oct 2012–13 NHL lockout
+16 Oct USA reach next stage of World Cup qualifiers with victory over Guatemala
+16 Oct Regarding a WWE RAW match played by Big Show in which Paul Heyman was the commentator
+16 Oct Related to an episode of Bad Girls Club S09 finale
+17 Oct ['gas prices', 'energy policy', 'clean energy', 'energy', 'price gas', 'oil production', 'politifact']
+17 Oct ['nbc politics', 'get glue', 'politics', 'soa', 'sons anarchy', 'soafx']
+17 Oct Regarding Federal Assault Weapons Ban
+17 Oct Tweets discussing birth control and planned parenthood
+16 Oct Fact check: Romney’s ‘binders full of women’ comment during the debate
+17 Oct On 17 October 2012, a live episode of the UK soap opera, Emmerdale was broadcast, marking the 40th anniversary of the first episode in 1972
