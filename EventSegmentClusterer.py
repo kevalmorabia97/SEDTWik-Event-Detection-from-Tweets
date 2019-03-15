@@ -1,26 +1,5 @@
 import networkx as nx
 
-def get_seg_similarity(bursty_segment_weights, time_window):
-    """
-    return a dict of similarity between segments where keys are index of segment in bursty_segments
-    """
-    print('Computing similarity between bursty segments')
-    seg_sim = {}
-    bursty_segments = list(bursty_segment_weights.keys())
-    n = len(bursty_segments)
-    for i in range(n):
-        seg_sim[i] = {}
-        seg_sim[i][i] = 1
-        seg1_name = bursty_segments[i]
-        print(i+1,seg1_name,str(bursty_segment_weights[seg1_name])[:7])
-        for j in range(i+1,n):
-            seg2_name = bursty_segments[j]
-            if j not in seg_sim: seg_sim[j] = {}
-            sim = time_window.get_segment_similarity(seg1_name, seg2_name)
-            seg_sim[i][j] = sim
-            seg_sim[j][i] = sim
-            
-    return seg_sim
 
 def get_events(bursty_segment_weights, segment_newsworthiness, seg_sim, n_neighbors=4, max_cluster_segments=20, threshold=4):
     """
@@ -65,15 +44,41 @@ def get_events(bursty_segment_weights, segment_newsworthiness, seg_sim, n_neighb
     threshold_worthiness = max_event_worthiness/threshold
     
     return [c for c in clusters if c[1]>threshold_worthiness] 
-            
+
+
 def get_k_neighbors(k, seg, seg_sim):
     """
     return set of k nearest neighbors of 'seg'
     """
     neighbor_list = []
-    sim_list = [] # sim_list[i] = similarity of seg with neighbors[i]
+    sim_list = [] # sim_list[i] = similarity of seg with neighbor[i]
     for i in seg_sim:
         if i == seg: continue
         neighbor_list.append(i)
         sim_list.append(seg_sim[seg][i])
     return set([x for _,x in sorted(zip(sim_list,neighbor_list), reverse=True)][:k])
+
+
+def get_seg_similarity(bursty_segment_weights, time_window):
+    """
+    return a dict of similarity between segments where keys are index of segment in bursty_segments
+    """
+    print('Computing similarity between bursty segments')
+    seg_sim = {}
+    bursty_segments = list(bursty_segment_weights.keys())
+    n = len(bursty_segments)
+    
+    for i in range(n):
+        seg_sim[i] = {}
+        seg_sim[i][i] = 1
+    
+    for i in range(n):
+        seg1_name = bursty_segments[i]
+        print(i+1, seg1_name, str(bursty_segment_weights[seg1_name])[:7])
+        for j in range(i+1, n):
+            seg2_name = bursty_segments[j]
+            sim = time_window.get_segment_similarity(seg1_name, seg2_name)
+            seg_sim[i][j] = sim
+            seg_sim[j][i] = sim
+            
+    return seg_sim

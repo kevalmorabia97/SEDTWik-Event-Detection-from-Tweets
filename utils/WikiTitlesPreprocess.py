@@ -4,7 +4,11 @@ import string
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
+# Latest Wiki titles file can be downloaded from https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-all-titles-in-ns0.gz
 def preprocess_wiki_titles_file(wiki_file, output_file, remove_stopwords=True):
+    """
+    Preprocess Wiki Titles file to make is usable in the event detection model
+    """
     print('Preprocessing Wiki Titles File.\nThis might take about an hour, so why dont you watch a TV Show meanwhile.\n')
         
     wiki_titles = set()
@@ -42,7 +46,6 @@ def preprocess_wiki_titles_file(wiki_file, output_file, remove_stopwords=True):
     print('DONE PREPROCESSING WIKI TITLES FILE!!!\n')
     
 if __name__ == '__main__':
-    # Wiki titles file can be downloaded from https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-all-titles-in-ns0.gz
     wiki_file='enwiki-latest-all-titles-in-ns0'
     
     output_file='enwiki-titles-unstemmed.txt'

@@ -1,6 +1,6 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from Segment import *
+from Segment import Segment
 
         
 def tf_idf_sim(text1, text2):
@@ -10,6 +10,37 @@ def tf_idf_sim(text1, text2):
         return ((tfidf * tfidf.T).A)[0,1]
     except:
         return 0
+
+
+class SubWindow:
+    time_frame_counter = 0 # static var
+    
+    def __init__(self,segments, tweet_count):
+        """
+            segments is dict of Segment class objects indexed by segment name ex. 'selena gomez'
+            tweet_count is number of tweets in this subwindow from which the segments are extracted
+        """
+        SubWindow.time_frame_counter += 1
+        
+        self.time_frame = SubWindow.time_frame_counter # unique time frame to each sub window starting from 1
+        self.segments = segments
+        self.tweet_count = tweet_count
+    
+    def __str__(self):
+        result = 'SubWindow #'+str(self.time_frame)+', No. of Tweets: '+str(self.tweet_count)
+        return result
+         
+    def get_tweets_containing_segment(self,segment):
+        return self.segments[segment].tweets
+    
+    def get_freq_of_segment(self, segment):
+        return self.segments[segment].freq
+
+    def get_user_count_for_segment(self, segment):
+        return self.segments[segment].get_user_count()
+    
+########## END OF CLASS SubWindow ##########    
+
 
 class TimeWindow:
 
@@ -49,8 +80,6 @@ class TimeWindow:
         
     def advance_window(self, next_subwindow):
         print('Advancing Time Window')
-        removed_subwindow = self.subwindows[0]
-    
         self.subwindows = self.subwindows[1:]
         self.subwindows.append(next_subwindow)
         self.start_frame += 1
@@ -67,8 +96,8 @@ class TimeWindow:
         similarity = 0
         for sw in self.subwindows:
 
-            s1 = sw.segments.get(s1_name,None)
-            s2 = sw.segments.get(s2_name,None)
+            s1 = sw.segments.get(s1_name, None)
+            s2 = sw.segments.get(s2_name, None)
             
             if not s1 == None: s1_freq += s1.freq
             if not s2 == None: s2_freq += s2.freq
@@ -80,34 +109,4 @@ class TimeWindow:
         similarity = similarity/(s1_freq * s2_freq)
         return similarity
 
-
 ########## END OF CLASS TimeWindow ##########
-    
-class SubWindow:
-    time_frame_counter = 0 # static var
-    
-    def __init__(self,segments, tweet_count):
-        """
-            segments is dict of Segment class objects indexed by segment name ex. 'selena gomez'
-            tweet_count is number of tweets in this subwindow from which the segments are extracted
-        """
-        SubWindow.time_frame_counter += 1
-        
-        self.time_frame = SubWindow.time_frame_counter # unique time frame to each sub window starting from 1
-        self.segments = segments
-        self.tweet_count = tweet_count
-    
-    def __str__(self):
-        result = 'SubWindow #'+str(self.time_frame)+', No. of Tweets: '+str(self.tweet_count)
-        return result
-         
-    def get_tweets_containing_segment(self,segment):
-        return self.segments[segment].tweets
-    
-    def get_freq_of_segment(self, segment):
-        return self.segments[segment].freq
-
-    def get_user_count_for_segment(self, segment):
-        return self.segments[segment].get_user_count()
-    
-########## END OF CLASS SubWindow ##########    

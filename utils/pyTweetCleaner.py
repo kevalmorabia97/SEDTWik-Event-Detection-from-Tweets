@@ -91,7 +91,7 @@ class TweetCleaner:
                 retweeter_user_info = tweet['user']
                 tweet = tweet['retweeted_status'] # replace retweet with original tweet but preserve user info of retweeter
                 tweet['retweet_count'] = 0
-                tweet['user'] = retweeter_info
+                tweet['user'] = retweeter_user_info
                 
             if not "created_at" in tweet: continue # remove info about deleted tweets
             if not tweet['lang'] == 'en': continue # remove tweets in non engligh(or lang) language

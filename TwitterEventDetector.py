@@ -4,23 +4,19 @@ from math import exp
 import os
 import sys
 
-from BurstySegmentExtractor import *
-from EventSegmentClusterer import *
-from Segment import *
-from TimeWindow import *
+from BurstySegmentExtractor import BurstySegmentExtractor
+from Segment import Segment
+from TimeWindow import SubWindow
 from TweetSegmenter import SEDTWikSegmenter
-from utils.pyTweetCleaner import *
+from utils.pyTweetCleaner import TweetCleaner
 
 
 class TwitterEventDetector():
-    
     def __init__(self, wiki_titles_file, seg_prob_file, wiki_Qs_file, remove_retweets=False, max_segment_length=4, hashtag_wt=3,
                  use_retweet_count=True, use_followers_count=True, default_seg_prob=0.000001, entities_only=False):
         
         self.segmenter = SEDTWikSegmenter(wiki_titles_file, max_segment_length, hashtag_wt, entities_only)
-
         self.remove_retweets = remove_retweets
-        
         self.bse = BurstySegmentExtractor(seg_prob_file, use_retweet_count, use_followers_count, default_seg_prob)   
 
         # prob that a segment is anchor text in all pages containing that segment
@@ -30,12 +26,13 @@ class TwitterEventDetector():
     def clean_tweets_in_directory(self, root_dir, target_dir):
         """
         clean tweets in root_dir using pyTweetCleaner and save cleaned files in target_dir
+        This need to be done just once and then the cleaned tweets can be used afterward
         """
         print('Cleaning all tweets in given directory')
         tc = TweetCleaner(True, self.remove_retweets)
         
         if not os.path.isdir(target_dir): os.mkdir(target_dir)
-        for dir_path, sub_dir_list, file_list in os.walk(root_dir):
+        for dir_path, _, file_list in os.walk(root_dir):
             dir_path = dir_path.replace('\\','/') # make windows-like path to unix-like path which can be used for both
             dir_name = dir_path.replace(root_dir,'') 
             print('Found directory: %s' % dir_name)

@@ -2,9 +2,6 @@ from collections import OrderedDict
 import json
 from math import exp, sqrt, log10
 
-from Segment import *
-from TimeWindow import *
-
 
 class BurstySegmentExtractor():
     """
