@@ -2,9 +2,7 @@
 Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using WIKipedia**
 
 
-**Cite**
-<hr>
-
+## Cite
 ```
 @inproceedings{morabia-etal-2019-sedtwik,
     title = "{SEDTW}ik: Segmentation-based Event Detection from Tweets Using {W}ikipedia",
