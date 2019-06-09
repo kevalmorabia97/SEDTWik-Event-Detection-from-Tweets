@@ -1,5 +1,5 @@
 # SEDTWik: Event Detection from Tweets
-Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using WIKipedia** available <a href="https://www.aclweb.org/anthology/papers/N/N19/N19-3011/" target="_blank">here</a>
+Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using WIKipedia** which is available <a href="https://www.aclweb.org/anthology/papers/N/N19/N19-3011/" target="_blank">here</a>
 
 
 ## Cite
