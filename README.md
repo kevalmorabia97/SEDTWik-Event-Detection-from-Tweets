@@ -1,4 +1,4 @@
-# Event Detection from Tweets
+# SEDTWik: Event Detection from Tweets
 Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using WIKipedia**
 
 
