@@ -1,5 +1,5 @@
 # SEDTWik: Event Detection from Tweets
-Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using WIKipedia** which is available [here](https://www.aclweb.org/anthology/papers/N/N19/N19-3011/)
+Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using Wikipedia** which is available [here](https://www.aclweb.org/anthology/papers/N/N19/N19-3011/)
 
 <p align="center">
     <img src="https://github.com/kevalmorabia97/SEDTWik-Event-Detection-from-Tweets/blob/master/img/sedtwik.jpg"/>
