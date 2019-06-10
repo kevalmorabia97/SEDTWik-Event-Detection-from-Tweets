@@ -1,6 +1,35 @@
 # SEDTWik: Event Detection from Tweets
-Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using WIKipedia** which is available <a href="https://www.aclweb.org/anthology/papers/N/N19/N19-3011/" target="_blank">here</a>
+Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using WIKipedia** which is available [here](https://www.aclweb.org/anthology/papers/N/N19/N19-3011/)
 
+<p align="center">
+    <img src="https://github.com/kevalmorabia97/SEDTWik-Event-Detection-from-Tweets/blob/master/img/sedtwik.jpg"/>
+    <b>SEDTWik Architecture</b>
+</p>
+
+## The process of Event detection can be divided into 4 parts:
+### 1. Tweet Segmentation
+Split a given tweet into non-overlapping meaningful segments, giving more weight to hashtags (𝐻). Filter out words not present as a Wikipedia page title.
+
+| Tweet                   | Segmentation (with 𝐻 = 3)               |
+| ----------------------- | --------------------------------------- |
+|Joe Biden and Paul Ryan will be seated at the debate tonight _#VpDebate_|[joe biden], [paul ryan], [seated], [debate], [tonight], [vp debate]x3|
+|Amanda Todd took her own life due to cyber bullying _#RipAmandaTodd_ _#NoMoreBullying_|[amanda todd], [cyber bullying], [rip amanda todd]x3, [no more bullying]x3|
+
+
+### 2. Bursty Segment Extraction
+Score segments based on their bursty probability (𝑃<sub>𝑏</sub>), and follower count (𝑓𝑐), retweet count (𝑟𝑐), and count of unique users using them (𝑢). Select top 𝐾=√(𝑁<sub>𝑡</sub> ) segments based on 𝑆𝑐𝑜𝑟𝑒 (𝑁<sub>𝑡</sub> = total number of tweets in current time window).<br>
+𝑃<sub>𝑏</sub>(s) measures how frequent a segment is occurring compared to its expected probability of occurrence.<br>
+Score<sub>s</sub> = 𝑃<sub>b</sub>(𝑠) × log⁡(𝑢<sub>s</sub>) × log(rc<sub>s</sub>) × log⁡(log⁡(𝑓𝑐<sub>s</sub>)).
+
+
+### 3. Bursty Segment Clustering
+Variation of Jarvis-Patrick Clustering algorithm.<br>
+Segments considered as nodes in a graph and 2 segments belong to same cluster if both are in 𝑘-NN of each other.<br>
+Segment similarity: 𝑡𝑓−𝑖𝑑𝑓 similarity between contents of tweets containing the segment.
+
+
+### 4. Event Summarization
+TEXT TEXT TEXT
 
 ## Cite
 ```
