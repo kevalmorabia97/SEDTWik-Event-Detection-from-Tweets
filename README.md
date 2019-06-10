@@ -17,19 +17,33 @@ Split a given tweet into non-overlapping meaningful segments, giving more weight
 
 
 ### 2. Bursty Segment Extraction
-Score segments based on their bursty probability (𝑃<sub>𝑏</sub>), and follower count (𝑓𝑐), retweet count (𝑟𝑐), and count of unique users using them (𝑢). Select top 𝐾=√(𝑁<sub>𝑡</sub> ) segments based on 𝑆𝑐𝑜𝑟𝑒 (𝑁<sub>𝑡</sub> = total number of tweets in current time window).<br>
-𝑃<sub>𝑏</sub>(s) measures how frequent a segment is occurring compared to its expected probability of occurrence.<br>
+Score segments based on their bursty probability (𝑃<sub>𝑏</sub>), and follower count (𝑓𝑐), retweet count (𝑟𝑐), and count of unique users using them (𝑢). Select top 𝐾=√(𝑁<sub>𝑡</sub> ) segments based on 𝑆𝑐𝑜𝑟𝑒 (𝑁<sub>𝑡</sub> = total number of tweets in current time window).
+
+𝑃<sub>𝑏</sub>(s) measures how frequent a segment is occurring compared to its expected probability of occurrence.
+
 Score<sub>s</sub> = 𝑃<sub>b</sub>(𝑠) × log⁡(𝑢<sub>s</sub>) × log(rc<sub>s</sub>) × log⁡(log⁡(𝑓𝑐<sub>s</sub>)).
 
 
 ### 3. Bursty Segment Clustering
-Variation of Jarvis-Patrick Clustering algorithm.<br>
-Segments considered as nodes in a graph and 2 segments belong to same cluster if both are in 𝑘-NN of each other.<br>
-Segment similarity: 𝑡𝑓−𝑖𝑑𝑓 similarity between contents of tweets containing the segment.
+Variation of Jarvis-Patrick Clustering algorithm.
 
+Segments considered as nodes in a graph and 2 segments belong to same cluster if both are in 𝑘-NN of each other.
+
+Segment similarity: 𝑡𝑓−𝑖𝑑𝑓 similarity between contents of tweets containing the segment.
+<p align="center">
+    <img src="https://github.com/kevalmorabia97/SEDTWik-Event-Detection-from-Tweets/blob/master/img/clustering_example.PNG" width="75%"/>
+</p>
+
+After creating candidate Event clusters, discard those that have newsworthiness value beyond a threshold.
 
 ### 4. Event Summarization
-TEXT TEXT TEXT
+Use all tweets containing segments of the event cluster and apply any text summarization algorithm to them to obtain a summary of the event.
+
+Event Summarization in itself is a big research area and many sophisticated methods are available to summarize text.
+
+A simple way to do this is by using LexRank (Extractive Text Sumsmarization) algorithm.
+
+We leave this part to the user to use any appropriate Summarization method. 
 
 ## Cite
 ```
