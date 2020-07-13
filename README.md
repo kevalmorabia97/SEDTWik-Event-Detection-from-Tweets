@@ -1,4 +1,7 @@
 # SEDTWik: Event Detection from Tweets
+
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/sedtwik-segmentation-based-event-detection/twitter-event-detection-on-events2012-oct-11)](https://paperswithcode.com/sota/twitter-event-detection-on-events2012-oct-11?p=sedtwik-segmentation-based-event-detection)
+
 Implementation of my paper: **SEDTWik: Segmentation-based Event Detection from Tweets using Wikipedia** which is available [here](https://www.aclweb.org/anthology/papers/N/N19/N19-3011/)
 
 <p align="center">
