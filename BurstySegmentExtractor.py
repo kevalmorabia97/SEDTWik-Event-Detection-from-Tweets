@@ -43,6 +43,7 @@ class BurstySegmentExtractor():
             user_set = set()
             retweet_count = 0 # sum of retweet counts of all tweets containing this segment
             followers_count = 0 # sum of followers counts of all users using this segment
+            newsworthiness = 0
             for sw in time_window.subwindows:
                 segment = sw.segments.get(seg_name,None)
                 if not segment == None:
@@ -65,14 +66,14 @@ class BurstySegmentExtractor():
             if self.use_followers_count:
                 bursty_score *= log10(1 + log10(1 + followers_count))
 
-            segments.append((seg_name, bursty_score))    
+            segments.append((seg_name, bursty_score, newsworthiness))    
         
         print('Total Segments:',len(segments))
         print('Bursty Segments:',k)
         
         bursty_segment_weights = OrderedDict()
         segment_newsworthiness = {}
-        for seg,b_score in sorted(segments, key = lambda x : x[1], reverse=True)[:k]:
+        for seg, b_score, newsworthiness in sorted(segments, key = lambda x : x[1], reverse=True)[:k]:
             bursty_segment_weights[seg] = b_score
             segment_newsworthiness[seg] = newsworthiness
             

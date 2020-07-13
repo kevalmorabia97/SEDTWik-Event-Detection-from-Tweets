@@ -57,7 +57,9 @@ seg_sim = get_seg_similarity(bursty_segment_weights, tw)
 events = get_events(bursty_segment_weights, segment_newsworthiness, seg_sim, n_neighbors)
 
 # dump event clusters along with tweets[cleaned ones :-( ] associated with the segments in the cluster 
-os.mkdir(event_output_dir)
+print('\nEvents will be saved in', event_output_dir)
+if not os.path.exists(event_output_dir):
+    os.makedirs(event_output_dir)
 event_no = 0
 for e, event_worthiness in events:
     event_no += 1
